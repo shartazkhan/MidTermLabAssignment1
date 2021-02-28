@@ -10,6 +10,13 @@ namespace MidTermLabAssignment1
     {
         static void Main(string[] args)
         {
+
+            Address address1 = new Address(45,10,"Dhaka","Bangladesh");
+            address1.PrintAddress();
+
+            Console.ReadKey();
+            
+
         }
     }
 }
