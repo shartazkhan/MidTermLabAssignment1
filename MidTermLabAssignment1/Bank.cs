@@ -10,7 +10,7 @@ namespace MidTermLabAssignment1
     {
 
         private string bankName;
-        private Account[] myBank;
+        public static Account[] myBank;
         public static int size;
 
         public Bank (string bankName, int size)
@@ -18,9 +18,10 @@ namespace MidTermLabAssignment1
             Bank.size = size;
             this.bankName = bankName;
             myBank = new Account[size];
-            
         }
 
+        
+       
         //int obj = Account.AccountNumber;
 
         public string BankName
@@ -30,8 +31,8 @@ namespace MidTermLabAssignment1
         }
         public Account[] Accounts
         {
-            set { this.myBank = value; }
-            get { return this.myBank; }
+            set { Bank.myBank = value; }
+            get { return Bank.myBank; }
         }
        
         public void PrintAllAccounts()
@@ -55,6 +56,12 @@ namespace MidTermLabAssignment1
                     break;
                 }
             }
+        }
+
+        public void trans(int typeT,int a)
+        {
+           
+
         }
 
         public void RemoveAccount(int accountNumber)

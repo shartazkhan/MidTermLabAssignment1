@@ -45,6 +45,7 @@ namespace MidTermLabAssignment1
                 string country = Console.ReadLine();
               
                 ourBank.AddAccount(new Account(name, ammount, AccountNumberGen(i), new Address(houseNo, roadNo, city ,country)));
+                
             }
             ourBank.PrintAllAccounts();
 

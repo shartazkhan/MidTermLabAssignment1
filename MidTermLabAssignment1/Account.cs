@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace MidTermLabAssignment1
 {
     class Account
@@ -13,14 +15,14 @@ namespace MidTermLabAssignment1
         private double balance;
         private Address address;//1-1 Relation
         //private double amount;
-
-        
+              
         public Account(string accountName, double balance,int acn, Address address)
         {
             this.accountName = accountName;
             this.balance = balance;
             this.address = address;
             this.accountNumber = acn;
+     
         }
 
         public int AccountNumber
@@ -46,25 +48,86 @@ namespace MidTermLabAssignment1
 
         public void Withdraw(double amount)
         {
-            balance -= amount;
+            Console.WriteLine("Enter account number: ");
+            int accNo = Convert.ToInt32(Console.ReadLine());
 
-            if (balance < 0)
+            for (int i = 0; i < Bank.myBank.Length; i++)
             {
-                throw new ArgumentException("Withdrawing " + amount.ToString("taka") + " would leave you overdrawn!");
+                if (Bank.myBank[i] == null)
+                {
+                    continue;
+                }
+                else if (Bank.myBank[i].accountNumber == accNo)
+                {
+                    Console.WriteLine("Account found!!");
+                    Bank.myBank[i].Balance = Bank.myBank[i].Balance - amount;
+                    Console.WriteLine("Your Current Balance is: " + Bank.myBank[i].Balance);
+                    // flag = false;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Account not found!!");
+                }
+                // return balance;
             }
-           // return balance;
 
+        }
+
+        public void Transfer(Account receiver,double amount)
+        {
+            Console.WriteLine("Enter account number: ");
+            int accNo = Convert.ToInt32(Console.ReadLine());
+           // bool flag = false;
+            for(int i = 0; i < Bank.myBank.Length; i++)
+            {
+                if (Bank.myBank[i] == null)
+                {
+                    continue;
+                }
+                else if (Bank.myBank[i].accountNumber == accNo)
+                {
+                    Console.WriteLine("Account found!!");
+                    Bank.myBank[i].Balance = Bank.myBank[i].Balance - amount;
+                    Console.WriteLine("Your Current Balance is: " + Bank.myBank[i].Balance);
+                   // flag = false;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Account not found!!");
+                }
+                
+            }
+           
         }
 
         public void Deposit(double amount)
         {
-            balance += amount;
-          //  return balance;
-        }
 
-        public void Transfer(double amount)
-        {
+            Console.WriteLine("Enter account number: ");
+            int accNo = Convert.ToInt32(Console.ReadLine());
 
+            for (int i = 0; i < Bank.myBank.Length; i++)
+            {
+                if (Bank.myBank[i] == null)
+                {
+                    continue;
+                }
+                else if (Bank.myBank[i].accountNumber == accNo)
+                {
+                    Console.WriteLine("Account found!!");
+                    Bank.myBank[i].Balance = Bank.myBank[i].Balance + amount;
+                    Console.WriteLine("Your Current Balance is: " + Bank.myBank[i].Balance);
+                    // flag = false;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Account not found!!");
+                }
+                // return balance;
+            }
         }
 
         public void PrintAccount()
