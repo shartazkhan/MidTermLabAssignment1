@@ -37,6 +37,7 @@ namespace MidTermLabAssignment1
        
         public void PrintAllAccounts()
         {
+            Console.WriteLine("-----------------" + BankName + "-----------------");
             for (int i = 0; i < myBank.Length; i++)
             {
                 if (myBank[i] == null)
@@ -45,6 +46,7 @@ namespace MidTermLabAssignment1
                 }
                 myBank[i].PrintAccount();
             }
+            Console.WriteLine("-----------------" + "######" + "-----------------");
         }
         public void AddAccount(Account account)
         {
@@ -58,42 +60,43 @@ namespace MidTermLabAssignment1
             }
         }
 
-        public void trans(int typeT,int a)
+        public void Transaction(int typeT,int a)
         {
            
 
         }
 
-        public void RemoveAccount(int accountNumber)
+        public void DeleteAccount(int accountNumber)
         {
             int flag = 0;
             for (int i = 0; i < myBank.Length; i++)
             {
-                if (myBank[i] == null)
+               
+                if (myBank[i].AccountNumber == accountNumber)
                 {
-                    continue;
+                    // myBank[i].PrintAccount();
+
+                    myBank[i] = null;
+                    Console.WriteLine("Account Deleted");
+                    flag = 1;
+                    break;
                 }
-                else if (myBank[i].AccountNumber == accountNumber)
+                else if (myBank[i] == null)
                 {
-                    myBank[i].PrintAccount();
-                    flag = 0;
-
-                    int length = myBank.Length;
-
-                    for (int k = 0; i < (length - i); i++)
+                    for (int k = 0; k < (myBank.Length - i); k++)
                     {
                         myBank[i] = myBank[i + 1];
                     }
-                    break;
+                    continue;
                 }
                 else
                 {
-                    flag = 1;
+                    flag = 0;
 
                 }
 
             }
-            if (flag == 1)
+            if (flag == 0)
                 Console.WriteLine("Account Not Found");
         }
 

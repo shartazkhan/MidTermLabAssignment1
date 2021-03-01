@@ -14,16 +14,20 @@ namespace MidTermLabAssignment1
         private string accountName;
         private double balance;
         private Address address;//1-1 Relation
-        //private double amount;
-              
+                                //private double amount;
+        public Account()
+        {
+
+        }
         public Account(string accountName, double balance,int acn, Address address)
         {
             this.accountName = accountName;
             this.balance = balance;
             this.address = address;
             this.accountNumber = acn;
-     
         }
+
+
 
         public int AccountNumber
         {
@@ -74,9 +78,13 @@ namespace MidTermLabAssignment1
 
         }
 
-        public void Transfer(Account receiver,double amount)
+        //public void Transfer(Account receiver,double amount)
+        public void Transfer( double amount)
         {
-            Console.WriteLine("Enter account number: ");
+            Console.WriteLine("Enter account number of receiver: ");
+            int accNo1 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter account number of sender: ");
             int accNo = Convert.ToInt32(Console.ReadLine());
            // bool flag = false;
             for(int i = 0; i < Bank.myBank.Length; i++)
@@ -89,6 +97,7 @@ namespace MidTermLabAssignment1
                 {
                     Console.WriteLine("Account found!!");
                     Bank.myBank[i].Balance = Bank.myBank[i].Balance - amount;
+                    
                     Console.WriteLine("Your Current Balance is: " + Bank.myBank[i].Balance);
                    // flag = false;
                     break;
@@ -97,9 +106,23 @@ namespace MidTermLabAssignment1
                 {
                     Console.WriteLine("Account not found!!");
                 }
-                
             }
-           
+
+            for (int i = 0; i < Bank.myBank.Length; i++)
+            {
+                //if (Bank.myBank[i].accountNumber == receiver.accountNumber)
+                if (Bank.myBank[i].accountNumber == accNo1)
+                {
+                    Bank.myBank[i].Balance = Bank.myBank[i].Balance + amount;
+                    Console.WriteLine("Transfer Compelted!!");
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
         }
 
         public void Deposit(double amount)
@@ -132,8 +155,8 @@ namespace MidTermLabAssignment1
 
         public void PrintAccount()
         {
-            //Console.WriteLine("Account No:"+this.accountNumber+"\nAccount Name:"+this.accountName+"\nBalance:"+this.balance);
-            Console.WriteLine("Account No:{0}\nAccount Name:{1}\nBalance:{2}", this.accountNumber, this.accountName, this.balance);
+            
+            Console.WriteLine("\nAccount No:{0}\nAccount Name:{1}\nBalance:{2}", this.accountNumber, this.accountName, this.balance);
             this.address.PrintAddress();
         }
 
