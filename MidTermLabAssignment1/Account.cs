@@ -52,29 +52,7 @@ namespace MidTermLabAssignment1
 
         public void Withdraw(double amount)
         {
-            Console.WriteLine("Enter account number: ");
-            int accNo = Convert.ToInt32(Console.ReadLine());
-
-            for (int i = 0; i < Bank.myBank.Length; i++)
-            {
-                if (Bank.myBank[i] == null)
-                {
-                    continue;
-                }
-                else if (Bank.myBank[i].accountNumber == accNo)
-                {
-                    Console.WriteLine("Account found!!");
-                    Bank.myBank[i].Balance = Bank.myBank[i].Balance - amount;
-                    Console.WriteLine("Your Current Balance is: " + Bank.myBank[i].Balance);
-                    // flag = false;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Account not found!!");
-                }
-                // return balance;
-            }
+            Console.WriteLine("Withdraw");
 
         }
 

@@ -8,14 +8,7 @@ namespace MidTermLabAssignment1
 {
     class Program
     {
-        /* static int AccountNumberGen()
-         {
-             int start = 10000000;
-            // int accountNumber = (start + inc);
-
-             return accountNumber;
-         }*/
-
+    
         static int AccountNumberGen(int inc)
         {
             int start = 999;
@@ -23,8 +16,10 @@ namespace MidTermLabAssignment1
             return an;
         }
         static void Main(string[] args)
-        {
+        {   
+            bool flag = true;
             int num;
+           
             //Console.WriteLine("How many accounts do you want to create? ");
             //int num = Convert.ToInt32(Console.ReadLine());
             //Bank ourBank = new Bank("Developer's bank", num);
@@ -35,8 +30,9 @@ namespace MidTermLabAssignment1
             num = Convert.ToInt32(Console.ReadLine());
             Bank ourBank = new Bank("Developer's bank", num);
 
-            while (true){
-                Console.WriteLine("1) Create Account \n2) Deposit \n3) Withdraw \n4) Transfer \n5)Delete \n6)Print \n");
+            while (flag)
+            {
+                Console.WriteLine("1) Create Account \n2) Deposit \n3) Withdraw \n4) Transfer \n5)Delete \n6)Print \n7) Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -92,9 +88,13 @@ namespace MidTermLabAssignment1
                     case 6:
                         ourBank.PrintAllAccounts();
                         break;
-                    default:
-
+                    case 7:
+                        flag = false;
                         break;
+                    default:
+                        Console.WriteLine("\nPlease Select between 1 to 7\n");
+                        continue;
+                        
 
 
                 }
@@ -112,7 +112,7 @@ namespace MidTermLabAssignment1
 
             }
 
-            Console.ReadKey();
+          
 
         }
 
