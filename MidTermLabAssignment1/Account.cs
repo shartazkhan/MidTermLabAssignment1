@@ -15,6 +15,9 @@ namespace MidTermLabAssignment1
         private double balance;
         private Address address;//1-1 Relation
                                 //private double amount;
+
+        Bank objBnak = new Bank();
+
         public Account()
         {
 
@@ -28,7 +31,7 @@ namespace MidTermLabAssignment1
         }
 
 
-
+      
         public int AccountNumber
         {
             get { return this.accountNumber; }
@@ -55,17 +58,17 @@ namespace MidTermLabAssignment1
             Console.WriteLine("Enter account number: ");
             int accNo = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 0; i < Bank.myBank.Length; i++)
+            for (int i = 0; i < objBnak.MyBank.Length; i++)
             {
-                if (Bank.myBank[i] == null)
+                if (objBnak.MyBank[i] == null)
                 {
                     continue;
                 }
-                else if (Bank.myBank[i].accountNumber == accNo)
+                else if (objBnak.MyBank[i].accountNumber == accNo)
                 {
                     Console.WriteLine("Account found!!");
-                    Bank.myBank[i].Balance = Bank.myBank[i].Balance - amount;
-                    Console.WriteLine("Your Current Balance is: " + Bank.myBank[i].Balance);
+                    objBnak.MyBank[i].Balance = objBnak.MyBank[i].Balance - amount;
+                    Console.WriteLine("Your Current Balance is: " + objBnak.MyBank[i].Balance);
                     // flag = false;
                     break;
                 }
@@ -87,18 +90,18 @@ namespace MidTermLabAssignment1
             Console.WriteLine("Enter account number of sender: ");
             int accNo = Convert.ToInt32(Console.ReadLine());
            // bool flag = false;
-            for(int i = 0; i < Bank.myBank.Length; i++)
+            for(int i = 0; i < objBnak.MyBank.Length; i++)
             {
-                if (Bank.myBank[i] == null)
+                if (objBnak.MyBank[i] == null)
                 {
                     continue;
                 }
-                else if (Bank.myBank[i].accountNumber == accNo)
+                else if (objBnak.MyBank[i].accountNumber == accNo)
                 {
                     Console.WriteLine("Account found!!");
-                    Bank.myBank[i].Balance = Bank.myBank[i].Balance - amount;
+                    objBnak.MyBank[i].Balance = objBnak.MyBank[i].Balance - amount;
                     
-                    Console.WriteLine("Your Current Balance is: " + Bank.myBank[i].Balance);
+                    Console.WriteLine("Your Current Balance is: " + objBnak.MyBank[i].Balance);
                    // flag = false;
                     break;
                 }
@@ -108,12 +111,12 @@ namespace MidTermLabAssignment1
                 }
             }
 
-            for (int i = 0; i < Bank.myBank.Length; i++)
+            for (int i = 0; i < objBnak.MyBank.Length; i++)
             {
                 //if (Bank.myBank[i].accountNumber == receiver.accountNumber)
-                if (Bank.myBank[i].accountNumber == accNo1)
+                if (objBnak.MyBank[i].accountNumber == accNo1)
                 {
-                    Bank.myBank[i].Balance = Bank.myBank[i].Balance + amount;
+                    objBnak.MyBank[i].Balance = objBnak.MyBank[i].Balance + amount;
                     Console.WriteLine("Transfer Compelted!!");
                     break;
                 }
@@ -131,17 +134,17 @@ namespace MidTermLabAssignment1
             Console.WriteLine("Enter account number: ");
             int accNo = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 0; i < Bank.myBank.Length; i++)
+            for (int i = 0; i < objBnak.MyBank.Length; i++)
             {
-                if (Bank.myBank[i] == null)
+                if (objBnak.MyBank[i] == null)
                 {
                     continue;
                 }
-                else if (Bank.myBank[i].accountNumber == accNo)
+                else if (objBnak.MyBank[i].accountNumber == accNo)
                 {
                     Console.WriteLine("Account found!!");
-                    Bank.myBank[i].Balance = Bank.myBank[i].Balance + amount;
-                    Console.WriteLine("Your Current Balance is: " + Bank.myBank[i].Balance);
+                    objBnak.MyBank[i].Balance = objBnak.MyBank[i].Balance + amount;
+                    Console.WriteLine("Your Current Balance is: " + objBnak.MyBank[i].Balance);
                     // flag = false;
                     break;
                 }

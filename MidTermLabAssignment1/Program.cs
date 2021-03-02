@@ -32,7 +32,7 @@ namespace MidTermLabAssignment1
 
             while (flag)
             {
-                Console.WriteLine("1) Create Account \n2) Deposit \n3) Withdraw \n4) Transfer \n5)Delete \n6)Print \n7) Exit");
+                Console.WriteLine("1) Create Account \n2) Deposit \n3) Withdraw \n4) Transfer \n5) Delete \n6) Print \n7) Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)

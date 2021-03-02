@@ -10,7 +10,7 @@ namespace MidTermLabAssignment1
     {
 
         private string bankName;
-        public static Account[] myBank;
+        private static Account[] myBank;
         public static int size;
 
         public Bank (string bankName, int size)
@@ -20,14 +20,31 @@ namespace MidTermLabAssignment1
             myBank = new Account[size];
         }
 
-        
-       
+        public Bank()
+        {
+            
+        }
+
+
+
         //int obj = Account.AccountNumber;
 
         public string BankName
         {
             set { this.bankName = value; }
             get { return this.bankName; }
+        }
+
+        public Account[] MyBank
+        {
+            get
+            {
+                return myBank;
+            }
+            set
+            {
+                myBank = value;
+            }
         }
         public Account[] Accounts
         {
