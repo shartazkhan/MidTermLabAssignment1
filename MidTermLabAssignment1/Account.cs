@@ -16,12 +16,7 @@ namespace MidTermLabAssignment1
         private Address address;//1-1 Relation
                                 //private double amount;
 
-        Bank objBnak = new Bank();
-
-        public Account()
-        {
-
-        }
+       
         public Account(string accountName, double balance,int acn, Address address)
         {
             this.accountName = accountName;
@@ -55,105 +50,36 @@ namespace MidTermLabAssignment1
 
         public void Withdraw(double amount)
         {
-            Console.WriteLine("Enter account number: ");
-            int accNo = Convert.ToInt32(Console.ReadLine());
-
-            for (int i = 0; i < objBnak.MyBank.Length; i++)
+            if (this.balance >= amount)
             {
-                if (objBnak.MyBank[i] == null)
-                {
-                    continue;
-                }
-                else if (objBnak.MyBank[i].accountNumber == accNo)
-                {
-                    Console.WriteLine("Account found!!");
-                    objBnak.MyBank[i].Balance = objBnak.MyBank[i].Balance - amount;
-                    Console.WriteLine("Your Current Balance is: " + objBnak.MyBank[i].Balance);
-                    // flag = false;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Account not found!!");
-                }
-                // return balance;
+                this.balance = this.balance - amount;
+                Console.WriteLine("Withdaw Successful");
             }
+            else
+            {
+                Console.WriteLine("Withdaw Not possible");
+            }
+                // return balance;
+            
 
         }
 
         //public void Transfer(Account receiver,double amount)
-        public void Transfer( double amount)
+        public void Transfer( Account receiver, double amount)
         {
-            Console.WriteLine("Enter account number of receiver: ");
-            int accNo1 = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Enter account number of sender: ");
-            int accNo = Convert.ToInt32(Console.ReadLine());
-           // bool flag = false;
-            for(int i = 0; i < objBnak.MyBank.Length; i++)
-            {
-                if (objBnak.MyBank[i] == null)
-                {
-                    continue;
-                }
-                else if (objBnak.MyBank[i].accountNumber == accNo)
-                {
-                    Console.WriteLine("Account found!!");
-                    objBnak.MyBank[i].Balance = objBnak.MyBank[i].Balance - amount;
-                    
-                    Console.WriteLine("Your Current Balance is: " + objBnak.MyBank[i].Balance);
-                   // flag = false;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Account not found!!");
-                }
-            }
-
-            for (int i = 0; i < objBnak.MyBank.Length; i++)
-            {
-                //if (Bank.myBank[i].accountNumber == receiver.accountNumber)
-                if (objBnak.MyBank[i].accountNumber == accNo1)
-                {
-                    objBnak.MyBank[i].Balance = objBnak.MyBank[i].Balance + amount;
-                    Console.WriteLine("Transfer Compelted!!");
-                    break;
-                }
-                else
-                {
-                    continue;
-                }
-            }
+            receiver.Deposite(amount);
+            this.Withdraw(amount);
+            Console.WriteLine("Transfer Successfully Completed");
 
         }
 
-        public void Deposit(double amount)
+        public void Deposite(double amount)
         {
+            
+            this.balance = this.balance + amount;
+            Console.WriteLine("Depisited!!");
 
-            Console.WriteLine("Enter account number: ");
-            int accNo = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 0; i < objBnak.MyBank.Length; i++)
-            {
-                if (objBnak.MyBank[i] == null)
-                {
-                    continue;
-                }
-                else if (objBnak.MyBank[i].accountNumber == accNo)
-                {
-                    Console.WriteLine("Account found!!");
-                    objBnak.MyBank[i].Balance = objBnak.MyBank[i].Balance + amount;
-                    Console.WriteLine("Your Current Balance is: " + objBnak.MyBank[i].Balance);
-                    // flag = false;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Account not found!!");
-                }
-                // return balance;
-            }
         }
 
         public void PrintAccount()

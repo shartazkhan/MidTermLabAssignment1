@@ -25,7 +25,7 @@ namespace MidTermLabAssignment1
             //Bank ourBank = new Bank("Developer's bank", num);
 
             // Bank ourBank = new Bank("Developer's bank", num);
-            Account acc = new Account();
+           
             Console.WriteLine("How many accounts do you want to create? ");
             num = Convert.ToInt32(Console.ReadLine());
             Bank ourBank = new Bank("Developer's bank", num);
@@ -62,22 +62,13 @@ namespace MidTermLabAssignment1
                         }
                         break;
                     case 2:
-                        //double ammount = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("\nDeposit ammount: ");
-                        double dep = Convert.ToInt32(Console.ReadLine());
-                        acc.Deposit(dep);
+                        ourBank.Transaction(2, 100.0);
                         break;
                     case 3:
-                        Console.WriteLine("\nWithdraw ammount: ");
-                        double withd = Convert.ToInt32(Console.ReadLine());
-                        acc.Withdraw(withd);
+                       
                         break;
                     case 4:
-                        Console.WriteLine("\nTransfer ammount: ");
-                        double trans = Convert.ToInt32(Console.ReadLine());
-                        //Console.WriteLine("\nTransfer Account: ");
-                        //int a = Convert.ToInt32(Console.ReadLine());
-                        acc.Transfer(trans);
+                       
                         break;
                     case 5:
                         
@@ -101,8 +92,11 @@ namespace MidTermLabAssignment1
 
 
 
+                
                
                 
+                
+
 
                 //Bank ourBank = new Bank("Developer's bank", 5);
                 //ourBank.AddAccount(new Account( "Shakib", 2000, new Address(45, 10, "Dhaka","BD")));

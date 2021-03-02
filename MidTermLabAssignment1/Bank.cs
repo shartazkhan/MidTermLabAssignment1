@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace MidTermLabAssignment1
 {
@@ -20,15 +21,11 @@ namespace MidTermLabAssignment1
             myBank = new Account[size];
         }
 
-        public Bank()
-        {
-            
-        }
+        
 
 
 
-        //int obj = Account.AccountNumber;
-
+    
         public string BankName
         {
             set { this.bankName = value; }
@@ -51,7 +48,10 @@ namespace MidTermLabAssignment1
             set { Bank.myBank = value; }
             get { return Bank.myBank; }
         }
+
        
+
+
         public void PrintAllAccounts()
         {
             Console.WriteLine("-----------------" + BankName + "-----------------");
@@ -76,11 +76,43 @@ namespace MidTermLabAssignment1
                 }
             }
         }
-
-        public void Transaction(int typeT,int a)
+        
+        public void Transaction(int transactionType, [Optional] double amount, [Optional] Account receiver)
         {
-           
+            Console.WriteLine("-----------------" + BankName + "-----------------\n");
+            Console.WriteLine("Please Enter a Account Number: ");
+            int accountNumber = Convert.ToInt32(Console.ReadLine());
+            bool check = false;
+            for (int i = 0; i < myBank.Length; i++)
+            {
+                if (myBank[i] == null)
+                {
+                    continue;
+                }
+                else if (transactionType == 1 && myBank[i].AccountNumber== accountNumber)
+                {
+                    myBank[i].Deposite(amount);
+                    check = true;
+                    break;
+                }
+                else if (transactionType == 2 && myBank[i].AccountNumber == accountNumber)
+                {
+                    myBank[i].Withdraw(amount);
+                    check = true;
+                    break;
+                }
+                else if (transactionType == 3 && myBank[i].AccountNumber == accountNumber)
+                {
+                    myBank[i].Transfer(receiver, amount);
+                    check = true;
+                    break;
+                }
 
+            }
+            if (check == false)
+            {
+                Console.WriteLine("You Choose a Wrong Number!!!! ");
+            }
         }
 
         public void DeleteAccount(int accountNumber)
